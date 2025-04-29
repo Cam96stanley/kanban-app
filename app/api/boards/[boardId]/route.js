@@ -18,10 +18,7 @@ export async function GET(req, { params }) {
 
 // Update a Board
 export async function PATCH(req, { params }) {
-  // Log params to ensure it's being passed correctly
-  console.log("Params received:", params);
-
-  const { boardId } = params; // Make sure params has boardId
+  const { boardId } = params;
 
   if (!boardId) {
     return new Response(JSON.stringify({ error: "Board ID is required." }), {
@@ -41,7 +38,6 @@ export async function PATCH(req, { params }) {
     const stmt = db.prepare("UPDATE boards SET name = ? WHERE id = ?");
     const info = stmt.run(updatedBoardData.name, boardId);
 
-    // If no rows were updated, return a 404 error
     if (info.changes === 0) {
       return new Response(
         JSON.stringify({ error: "Board not found or no change made." }),
@@ -49,7 +45,6 @@ export async function PATCH(req, { params }) {
       );
     }
 
-    // Return the updated board data
     return new Response(
       JSON.stringify({ id: boardId, name: updatedBoardData.name }),
       { status: 200 }

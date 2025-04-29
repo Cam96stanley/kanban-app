@@ -1,4 +1,3 @@
-// app/api/boards/[boardId]/columns/[columnId]/tasks/route.js
 import db from "@/lib/db/db";
 
 export async function GET(req, { params }) {
@@ -11,7 +10,6 @@ export async function GET(req, { params }) {
   }
 
   try {
-    // Fetch columns for the board
     const columns = db
       .prepare("SELECT * FROM columns WHERE board_id = ?")
       .all(boardId);
@@ -23,7 +21,6 @@ export async function GET(req, { params }) {
       );
     }
 
-    // Fetch tasks for each column
     const tasksForColumns = columns.map((column) => {
       const tasks = db
         .prepare("SELECT * FROM tasks WHERE column_id = ?")

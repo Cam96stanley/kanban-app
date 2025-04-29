@@ -4,7 +4,6 @@ import db from "@/lib/db/db";
 export async function GET(req, { params }) {
   const { boardId } = params;
 
-  // Check if boardId is present in the params
   if (!boardId) {
     return new Response(JSON.stringify({ error: "Board ID is required." }), {
       status: 400,
@@ -13,19 +12,14 @@ export async function GET(req, { params }) {
 
   try {
     const stmt = db.prepare("SELECT * FROM columns WHERE board_id = ?");
-    const columns = stmt.all(boardId); // Pass boardId to the query
+    const columns = stmt.all(boardId);
 
-    // Check if columns were found and return the appropriate response
     if (columns.length === 0) {
       return new Response(JSON.stringify([]), { status: 200 });
     }
 
     return new Response(JSON.stringify(columns), { status: 200 });
   } catch (error) {
-    // Log error for debugging
-    console.error("Error fetching columns:", error);
-
-    // Return detailed error message in the response
     return new Response(
       JSON.stringify({
         error: error.message || "An error occurred while retrieving columns.",
@@ -47,7 +41,6 @@ export async function POST(req, { params }) {
     );
   }
 
-  // Check if the board exists
   const boardCheckStmt = db.prepare("SELECT id FROM boards WHERE id = ?");
   const board = boardCheckStmt.get(boardId);
 
