@@ -1,5 +1,7 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import MainHeader from "@/components/main-header";
+import HamMenu from "@/components/ham-menu";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -15,7 +17,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`m-6 ${jakarta.variable}`}>{children}</body>
+      <body className={`flex ${jakarta.variable}`}>
+        <HamMenu />
+        <div className="flex-1">
+          <MainHeader />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

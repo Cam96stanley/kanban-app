@@ -6,13 +6,13 @@
 
 @theme {
   --color-purple: #635fc7;
-  --color-purple-hover: #A8A4FF
-  --color-off-purple: #F4F7FD;
+  --color-purple-hover: #a8a4ff;
+  --color-off-purple: #f4f7fd;
   --color-red: #ea5555;
-  --color-red-hover: #FF9898
+  --color-red-hover: #ff9898;
   --color-very-dark-gray: #20212c;
   --color-dark-gray: #2b2c37;
-  --color-dark-line-gray: #3E3F4E
+  --color-dark-line-gray: #3e3f4e;
   --color-med-gray: #828fa3;
   --color-light-gray: #e4ebfa;
   --color-black: #000112;
