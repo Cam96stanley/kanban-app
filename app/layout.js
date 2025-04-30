@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`flex ${jakarta.variable}`}>
+      <body className={`flex ${jakarta.variable} bg-light-gray`}>
         <HamMenu />
         <div className="flex-1">
           <MainHeader />

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function MainHeader() {
   return (
-    <header className="border-b border-dark-line-gray/10 flex">
+    <header className="bg-white border-b border-dark-line-gray/10 flex">
       <div className="w-87 p-6 flex items-center border-r border-dark-line-gray/10 justify-center">
         <Image
           className="mr-3"

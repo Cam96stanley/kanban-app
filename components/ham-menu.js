@@ -2,8 +2,10 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { FaRegEye } from "react-icons/fa6";
+import { BsEyeSlash } from "react-icons/bs";
 import AddBoardForm from "./create-board-form";
 import BoardList from "./board-list";
+import ThemeToggle from "./theme-toggle";
 
 export default function HamMenu() {
   const [open, setOpen] = useState(true);
@@ -33,30 +35,45 @@ export default function HamMenu() {
   };
 
   return (
-    <div className="flex">
+    <>
       <div
         className={`absolute bg-white top-21 left-0 h-full ${
-          open ? "w-76 p-4" : "w-0 p-0"
+          open ? "w-75 p-4" : "w-0 p-0"
         }`}
       >
-        <div
-          className="bg-purple flex rounded-r-2xl w-14 h-12 absolute -right-14 top-[75%] cursor-pointer z-50"
-          onClick={() => setOpen(!open)}
-        >
-          <FaRegEye className="text-white self-center m-auto text-2xl" />
-        </div>
-        <p
-          className={`text-med-gray text-sm tracking-widest font-bold mt-4 ${
-            !open && "hidden"
-          }`}
-        >
-          All Boards ({boards.length})
-        </p>
+        {open ? (
+          <>
+            <div className="absolute left-6 top-[74%]">
+              <ThemeToggle />
+            </div>
+            <div
+              className="flex rounded-2xl w-50 h-12 absolute left-6 top-[80%] cursor-pointer z-50 justify-center"
+              onClick={() => setOpen(!open)}
+            >
+              <BsEyeSlash className="text-med-gray self-center mr-4 text-2xl" />
+              <p className="font-sans text-med-gray self-center">
+                Hide Sidebar
+              </p>
+            </div>
+          </>
+        ) : (
+          <div
+            className="bg-purple flex rounded-r-2xl w-14 h-12 absolute -right-14 top-[80%] cursor-pointer z-50"
+            onClick={() => setOpen(!open)}
+          >
+            <FaRegEye className="text-white self-center m-auto text-2xl" />
+          </div>
+        )}
         <div className={`${!open && "hidden"}`}>
-          <BoardList boards={boards} />
-          <AddBoardForm onAdd={handleAddBoard} />
+          <p className="text-med-gray text-sm tracking-widest font-bold mt-4">
+            All Boards ({boards.length})
+          </p>
+          <div>
+            <BoardList boards={boards} />
+            <AddBoardForm onAdd={handleAddBoard} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

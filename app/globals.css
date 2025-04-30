@@ -17,3 +17,5 @@
   --color-light-gray: #e4ebfa;
   --color-black: #000112;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
