@@ -15,7 +15,7 @@ export default function MainHeader() {
       </div>
       <div className="w-full flex items-center justify-between">
         <p className="font-sans text-xl font-bold ml-10">Platform Launch</p>
-        <button className="rounded-3xl bg-purple px-4 py-2 text-white font-sans mr-10">
+        <button className="rounded-3xl bg-purple/25 px-4 py-2 text-white font-sans mr-10">
           + Add New Task
         </button>
       </div>

@@ -8,7 +8,7 @@ import BoardList from "./board-list";
 import ThemeToggle from "./theme-toggle";
 
 export default function HamMenu() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [boards, setBoards] = useState([]);
   const [error, setError] = useState(null);
 
