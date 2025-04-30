@@ -2,7 +2,7 @@ import db from "@/lib/db/db";
 
 // Get Single Board
 export async function GET(req, { params }) {
-  const { boardId } = params;
+  const { boardId } = await params;
 
   const stmt = db.prepare("SELECT * FROM boards WHERE id = ?");
   const board = stmt.get(boardId);
@@ -18,7 +18,7 @@ export async function GET(req, { params }) {
 
 // Update a Board
 export async function PATCH(req, { params }) {
-  const { boardId } = params;
+  const { boardId } = await params;
 
   if (!boardId) {
     return new Response(JSON.stringify({ error: "Board ID is required." }), {
@@ -63,7 +63,7 @@ export async function PATCH(req, { params }) {
 
 // Delete Single Board
 export async function DELETE(req, { params }) {
-  const { boardId } = params;
+  const { boardId } = await params;
 
   if (!boardId) {
     return new Response(JSON.stringify({ error: "Board ID is required." }), {
